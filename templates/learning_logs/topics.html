@@ -1,0 +1,55 @@
+{% extends 'learning_logs/base.html' %}
+{% block page_header %}
+
+<style>
+    .material-symbols-outlined {
+          font-size: 35px;
+          position: relative; /* or absolute, fixed, sticky */
+          top: 5px;  /* Move down */
+          left: -10px; /* Move right */
+        }
+
+    .flex-container {
+        display: flex;
+        align-items: flex-start; /* Vertically centers the content */
+        justify-content: space-between; /* Adds space between image and text */
+    }
+
+    .text-content {
+        flex: 1;
+        margin-right: 0px; /* Adds space between the text and the image */
+    }
+
+    .img-fluid {
+        max-width: 30%; /* Adjust this percentage based on the desired image size */
+        height: auto;
+    }
+</style>
+
+    <h1>Topics
+        <span class="material-symbols-outlined"> kid_star </span>
+    </h1>
+{% endblock page_header %}
+
+{% block content %}
+<ul class="list-group border-bottom pb-2 mb-4">
+    <div class="flex-container">
+        <div class="text-content">
+            {% for topic in topics %}
+                <li class="list-group-item border-0">
+                    <a href="{% url 'learning_logs:topic' topic.id %}" class="custom-text" >
+                        {{ topic.text }}</a>
+                </li>
+            {% empty %}
+                <li class="list-group-item border-0">No topics have been added yet.</li>
+            {% endfor %}
+        </div>
+        <img src="https://static.vecteezy.com/system/resources/previews/005/495/635/non_2x/concepts-for-e-learning-online-education-e-book-self-education-vector.jpg" alt="Learning Log Image" class="img-fluid" />
+    </div>
+</ul>
+
+<a href="{% url 'learning_logs:new_topic' %}" class="custom-text" >Add a new topic</a>
+
+{% endblock content %}
+
+

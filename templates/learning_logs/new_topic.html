@@ -1,0 +1,41 @@
+{% extends "learning_logs/base.html" %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+
+<style>
+
+    .flex-container {
+        display: flex;
+        align-items: flex-start; /* Vertically centers the content */
+        justify-content: space-between; /* Adds space between image and text */
+    }
+
+    .text-content {
+        flex: 1;
+        margin-right: 0px; /* Adds space between the text and the image */
+    }
+
+    .img-fluid {
+        max-width: 30%; /* Adjust this percentage based on the desired image size */
+        height: auto;
+    }
+</style>
+
+<div class="p-3 mb-4 bg-light border rounded-3">
+    <div class="flex-container">
+        <div class="text-content">
+            <div class="container-fluid py-4">
+                <h4> Add a new topic: </h4>
+                <form action="{% url 'learning_logs:new_topic' %}" method='post'>
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                    {% bootstrap_button button_type="submit" content="Add topic" button_class="custom-btn" %}
+                </form>
+            </div>
+        </div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Wikimedia_in_Education_illustration_collaboration.svg" alt="Learning Log Image" class="img-fluid" />
+    </div>
+</div>
+
+{% endblock content %}

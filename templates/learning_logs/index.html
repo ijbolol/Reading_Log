@@ -1,0 +1,53 @@
+{% extends 'learning_logs/base.html' %}
+
+{% block content %}
+
+<style>
+    .material-symbols-outlined {
+          font-size: 60px;
+          position: relative;
+          top: 10px;
+          left: -30px;
+    }
+
+    /* Flexbox container to align text and image side by side */
+    .flex-container {
+        display: flex;
+        align-items: flex-start; /* Vertically centers the content */
+        justify-content: space-between; /* Adds space between image and text */
+    }
+
+    .text-content {
+        flex: 1;
+        margin-right: 0px; /* Adds space between the text and the image */
+    }
+
+    .img-fluid {
+        max-width: 60%; /* Adjust this percentage based on the desired image size */
+        height: auto;
+    }
+</style>
+
+<div class="p-3 mb-4 bg-light border rounded-3">
+     <div class="container-fluid py-4">
+         <h1 class="display-3"><b>Track your learning.</b>
+             <span class="material-symbols-outlined">
+                 family_star </span>
+         </h1>
+         <p class="lead">Make your own Learning Log, and keep a list of the topics you're learning about. Whenever you learn something new about a topic, make an entry summarizing what you've learned.</p>
+         <a class="btn btn-light btn-lg mt-1"
+            href="{% url 'accounts:register' %}"
+            style="background-color: #bdcbff; color: black;">Register &raquo;</a>
+         <div class="flex-container">
+             <img src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Wikimedia_in_Education_illustration_classroom.svg" alt="Learning Log Image" class="img-fluid" />
+             <div class="text-content">
+                 <p class="lead"> <small> <i> “I have no special talent. I am only passionately curious.” </i> </small> </p>
+                 <p class="lead"> <small> <b> - Albert Einstein </b> </small> </p>
+                 <p class="lead"> &nbsp; </p>
+                 <p class="lead"> <small> <i> “Knowledge is a skyscraper. You can take a shortcut with a fragile foundation of memorization, or build slowly upon a steel frame of understanding.” </i> </small> </p>
+                 <p class="lead"> <small> <b> - Naval Ravikant </b> </small> </p>
+             </div>
+         </div>
+     </div>
+</div>
+{% endblock content %}
